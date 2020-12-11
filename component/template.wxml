@@ -1,0 +1,785 @@
+<!----------------------------m_title----------------------------------------------->
+<!--
+数据：
+m_title_data:['登记信息',true , false]
+ m_title_data[0]为内容 ， 
+ m_title_data[1]为是否显示’无‘ , 
+ m_title_data[2]为显示向上的箭头还是向下的箭头
+ m_title_data[3]箭头前段显示的数量
+动作方法名为 m_title_js_hidden 动作的相关值为data[2]
+-->
+
+<template name="m_title">
+
+  <view class="m_title_css_0" bindtap="m_title_js_hidden">
+    <text class="m_title_css_1">{{m_title_data[0]}}</text>
+    <text class="m_title_css_2 iconfont {{m_title_data[2] ? 'icon-ss_xia' : 'icon-ss_shang' }} " hidden="{{!m_title_data[1]}}">{{m_title_data[3]}}</text>
+    <text class="m_title_css_3" hidden="{{m_title_data[1]}}">-</text>
+  </view>
+
+</template>
+
+
+<!----------------------------m_content_0-------------------------->
+
+<!--
+数据：
+m_content_0_data：['法定代表人', "洋洋洋洋洋洋", false, false,'iconfont icon-fanhui-copy-copy' ， '']  
+m_content_0_data[0]为模块标题 ， 
+m_content_0_data[1]为模块内容 ， 
+m_content_0_data[2]为是否显示右侧箭头 ,
+m_content_0_data[3]为是否显示中间分隔线 ,
+m_content_0_data[4]为标题内容添加图标,
+m_content_0_data[5]设置模块内容为图片，为图片链接
+-->
+
+
+<template name="m_content_0">
+  <view class="m_content_0_css_3">
+    <view class="m_content_0_css_0 " style="{{m_content_0_data[2] ? 'width:90%' : '' }}">
+      <text class="m_content_0_css_1 ">{{m_content_0_data[0]}}</text>
+      <text class="m_content_0_css_5" hidden="{{!m_content_0_data[3]}}"></text>
+      <text class="m_content_0_css_2 {{m_content_0_data[4]}}" hidden="{{m_content_0_data[5] == '' ? false : true}}">{{m_content_0_data[1] == '' ? '-' : m_content_0_data[1]}}</text>
+      <image mode="aspectFit" style="margin-left: 0" class="m_content_0_css_2" src="{{m_content_0_data[5]}}" hidden="{{m_content_0_data[5] == '' ? true :false}}"></image>
+    </view>
+    <view class="m_content_0_css_4" hidden="{{!m_content_0_data[2]}}">
+
+      <text class="iconfont icon-fanhui-copy-copy "></text>
+    </view>
+  </view>
+</template>
+
+
+<!----------------------------------------m_content_1---------------------------------------------------->
+
+<!--
+数据：
+m_content_1_data：['成立日期' , '2017-01-01' , '成立日期' , '2017-01-01']
+-->
+
+<template name="m_content_1">
+
+  <view class="m_content_1_css_0">
+    <view class="m_content_1_css_1">
+      <view class="m_content_1_css_2">
+        <text class="m_content_1_css_5">{{m_content_1_data[0]}}</text>
+        <text class="m_content_1_css_3 m_content_1_css_5">{{m_content_1_data[1] == '' ? '-' :m_content_1_data[1]}}</text>
+      </view>
+      <view class="m_content_1_css_2 m_content_1_css_4">
+        <text class="m_content_1_css_5">{{m_content_1_data[2]}}</text>
+        <text class="m_content_1_css_3 m_content_1_css_5">{{m_content_1_data[3] == '' ? '-' : m_content_1_data[3]}}</text>
+      </view>
+
+    </view>
+
+  </view>
+
+</template>
+
+<!--------------------------------------m_content_2-------------------------------------------------------->
+
+<!--
+数据:
+m_content_2_data：['雷军', false, ‘董事长’]  
+m_content_2_data[1] 是否显示m_content_2_data[2]
+-->
+
+
+<template name="m_content_2">
+
+  <view class="m_content_2_css_0">
+
+    <text class="m_content_2_css_1">{{m_content_2_data[0]}}</text>
+    <text class="m_content_2_css_2" hidden="{{m_content_2_data[1] || m_content_2_data[2] == ''}}">{{m_content_2_data[2]}}</text>
+
+  </view>
+
+</template>
+
+<!----------------------------------m_content_3-------------------------------------------------------------->
+
+<!--
+数据：
+m_content_3_data :  [
+      {
+        time:'2017-01-01',
+        content:[
+          {
+            befor:'十大发的说法撒打发斯蒂芬',
+            after:'发的说法都是发的说法都是服务法士大夫'
+          },
+        ]
+      }
+    ]
+-->
+
+
+<template name="m_content_3">
+
+  <view class="m_content_3_css_0">
+    <block wx:for="{{m_content_3_data}}">
+      <view class="m_content_3_css_1">
+
+        <view class="m_content_3_css_3">
+          <text class="iconfont icon-dian2 m_content_3_css_2"></text>
+          <view class="m_content_3_css_4"></view>
+        </view>
+        <view class="m_content_3_css_3 m_content_3_css_8">
+
+          <text class="m_content_3_css_5">{{item.time}}</text>
+          <block wx:for="{{item.content}}">
+            <text class="m_content_3_css_6">{{item.name}}</text>
+            <view class="m_content_3_css_6 m_content_3_css_7" hidden="{{item.befor == '' && item.after == '' ? true : false}}">
+              <view class="m_content_1_css_1">
+                <view class="m_content_1_css_2">
+                  <text class="m_content_1_css_5">变更前</text>
+                  <text class="m_content_1_css_3 m_content_1_css_5">{{item.befor}}</text>
+                </view>
+                <view class="m_content_1_css_2 m_content_3_css_9">
+                  <text class="m_content_1_css_5">变更后</text>
+                  <text class="m_content_1_css_3 m_content_1_css_5">{{item.after}}</text>
+                </view>
+
+              </view>
+            </view>
+          </block>
+        </view>
+
+
+      </view>
+    </block>
+
+
+  </view>
+
+</template>
+
+
+<!--------------------------------------m_content_4---------------------------------------------------->
+
+<!--
+数据：
+m_content_4_data:['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , '雷军' , '董事长']
+
+-->
+
+<template name="m_content_4">
+
+  <view class="m_content_4_css_0">
+
+    <view class="m_content_4_css_1">
+      <image class="m_content_4_css_3" src="{{m_content_4_data[0]}}"></image>
+      <view class="m_content_4_css_2">
+        <text class="m_content_4_css_4">{{m_content_4_data[1]}}</text>
+        <text class="m_content_4_css_5">{{m_content_4_data[2]}}</text>
+      </view>
+    </view>
+
+  </view>
+
+</template>
+
+
+
+<!-------------------------------m_content_5----------------------------------------------------->
+
+<!--
+数据：
+m_content_5_data：['小米科技有限公司' , '测试测试' , true , true , false]
+m_content_5_data[2] 是否显示右侧箭头
+m_content_5_data[3] 是否显示右侧内容
+m_content_5_data[4] 是否设置文字居中
+-->
+
+<template name="m_content_5">
+
+  <view class="m_content_5_css_0">
+    <view class="m_content_5_css_1 {{m_content_5_data[4] ? '' : 'm_content_5_css_5'}}">
+      <text class="m_content_5_css_2">{{m_content_5_data[0]}}</text>
+      <text class="m_content_5_css_3 iconfont icon-fanhui-copy-copy" hidden="{{!m_content_5_data[2]}}"></text>
+      <text class="m_content_5_css_3 m_content_5_css_4" hidden="{{!m_content_5_data[3]}}">{{m_content_5_data[1] == '' ? '-' : m_content_5_data[1]}}</text>
+    </view>
+  </view>
+
+
+</template>
+
+<!--------------------------m_content_6----------------------------------------------------------------------------->
+
+<!--
+数据：
+m_content_6_data :  ['小米科技有限公司', [['测试测试:', '测试'], ['测试测试:', '测试'], ['测试测试:', '测试']], true, 'icon-yaozixun', false, '发明授权', 'red', true]
+
+m_content_6_data[0] 标题
+m_content_6_data[1] 内容数组
+m_content_6_data[2] 是否显示右侧箭头
+m_content_6_data[3] 标题前面的图标
+m_content_6_data[4] 是否显示右下角图标，内容必须是三个
+m_content_6_data[5] 右下角字符图标内容
+m_content_6_data[6] 右下角字符图标的颜色
+m_content_6_data[7] 是否显示标题
+-->
+
+<template name="m_content_6">
+
+  <block wx:if='{{m_content_6_data[4]}}'>
+    <view class="m_content_6_css_0">
+
+      <view class="m_content_6_css_1" style="{{m_content_6_data[2] ? '' :'width: 90%;'}}">
+        <text class="m_content_6_css_2 m_content_6_css_3  {{m_content_6_data[3]}}">{{m_content_6_data[0] == '' ? '-' : m_content_6_data[0]}}</text>
+        <block wx:for="{{m_content_6_data[1]}}">
+          <text class="m_content_6_css_2 m_content_6_css_4">{{item[0]+item[1]}}</text>
+        </block>
+      </view>
+
+      <view class="m_content_6_css_5" hidden="{{m_content_6_data[2]}}">
+        <text class="iconfont icon-fanhui-copy-copy m_content_6_css_6"></text>
+      </view>
+
+    </view>
+  </block>
+  <block wx:if='{{!m_content_6_data[4]}}'>
+    <view class="m_content_6_css_0">
+
+      <view class="m_content_6_css_1" style="{{!m_content_6_data[2]  ? 'width: 90%;' : ''}}{{!m_content_6_data[4]  ? 'width: 90%;' : ''}}">
+        <text class="m_content_6_css_2 m_content_6_css_3 iconfont {{m_content_6_data[3]}}" hidden="{{m_content_6_data[7]}}">{{m_content_6_data[0] == '' ? '-' : m_content_6_data[0]}}</text>
+        <view class="m_content_6_css_4">
+          <text class="m_content_6_css_2 ">{{m_content_6_data[1][0][0]}}</text>
+          <text style="color:{{m_content_6_data[7] ? '#000' :''}}">{{m_content_6_data[1][0][1]}}</text>
+        </view>
+        <view class="m_content_6_css_4">
+          <text class="m_content_6_css_2 ">{{m_content_6_data[1][1][0]}}</text>
+          <text style="color:{{m_content_6_data[7] ? '#000' :''}}">{{m_content_6_data[1][1][1]}}</text>
+        </view>
+
+        <view class="m_content_6_css_7 m_content_6_css_4">
+          <text class="m_content_6_css_2 " style='margin-left:0rpx'>{{m_content_6_data[1][2][0]}}</text>
+          <text style="color:{{m_content_6_data[7] ? '#000' :''}}">{{m_content_6_data[1][2][1]}}</text>
+          <view hidden="{{m_content_6_data[5] == '' ? true : false}}">
+            <text class="m_content_6_css_8" style="color:{{m_content_6_data[6]}};border: 3rpx solid {{m_content_6_data[6]}};">{{m_content_6_data[5]}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="m_content_6_css_5" hidden="{{m_content_6_data[2]}}" style='display: flex;justify-content: center;align-items: center;'>
+        <text class="iconfont icon-fanhui-copy-copy m_content_6_css_6"></text>
+      </view>
+
+
+    </view>
+  </block>
+
+
+</template>
+
+<!-----------------------------------m_content_7--------------------------------------------------------------->
+
+
+<!--
+数据：
+m_content_7_data : "http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg"
+-->
+
+<template name="m_content_7">
+
+  <view class="m_content_7_css_0">
+
+    <image mode="aspectFit" class="m_content_7_css_1" src="{{m_content_7_data}}"></image>
+
+  </view>
+
+</template>
+
+<!------------------------------------m_content_8-------------------------------------------------------------->
+
+<!--
+数据：
+m_content_8_data : ['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , 'MIUI' , '注册号：222222222'
+, '注册号：222222222', '注册号：222222222' ,'null' , true]
+
+m_content_8_data[0] 为图片链接
+m_content_8_data[1] 为标题
+m_content_8_data[2] 为内容一
+m_content_8_data[3] 为内容二
+m_content_8_data[4] 为内容三
+m_content_8_data[5] 为字体图标内容
+m_content_8_data[6] 为是否显示字体图标
+
+-->
+
+<template name="m_content_8">
+
+  <view class="m_content_8_css_0">
+
+    <view class="m_content_8_css_1">
+      <image class="m_content_8_css_2" src="{{m_content_8_data[0]}}"></image>
+      <view class="m_content_8_css_3">
+        <text class="m_content_8_css_4">{{m_content_8_data[1]}}</text>
+        <view hidden="{{!m_content_8_data[6]}}">
+          <text class="m_content_8_css_5 m_content_8_css_6">{{m_content_8_data[5]}}</text>
+        </view>
+
+        <text class="m_content_8_css_5">{{m_content_8_data[2]}}</text>
+        <text class="m_content_8_css_5">{{m_content_8_data[3]}}</text>
+        <text class="m_content_8_css_5">{{m_content_8_data[4]}}</text>
+      </view>
+      <view class="m_content_8_css_7">
+        <text class="iconfont icon-fanhui-copy-copy "></text>
+      </view>
+    </view>
+
+  </view>
+
+</template>
+
+<!-------------------------------------m_content_9---------------------------------------------------->
+
+
+<!--
+数据：
+m_content_9_data : ['商品服务列表' , ['牛奶' ，'牛奶'，'牛奶'，'牛奶'，'牛奶' ]]
+-->
+
+<template name="m_content_9">
+
+  <view class="m_content_9_css_0">
+    <text class="m_content_9_css_2">{{m_content_9_data[0]}}</text>
+    <view class="m_content_9_css_1 m_content_9_css_0">
+      <block wx:for="{{m_content_9_data[1]}}">
+        <text class="m_content_9_css_3">{{item}}</text>
+      </block>
+    </view>
+  </view>
+
+</template>
+
+<!------------------------------------------m_content_10---------------------------------------------->
+
+<!--
+数据：
+m_content_10_data : ['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , '核发进网许可证' , '国家信用中心' , '全国共有222家企业拥有此证书']
+-->
+
+<template name="m_content_10">
+
+  <view class="m_content_10_css_0">
+
+    <view class="m_content_10_css_1">
+
+      <image class="m_content_10_css_3" src='{{m_content_10_data[0]}}'></image>
+
+      <view class="m_content_10_css_2">
+        <text class="m_content_10_css_4">{{m_content_10_data[1]}}</text>
+        <text class="m_content_10_css_5">{{m_content_10_data[2]}}</text>
+        <text class="m_content_10_css_6">{{m_content_10_data[3]}}</text>
+      </view>
+      <view class="m_content_10_css_7">
+        <text class="iconfont icon-fanhui-copy-copy "></text>
+      </view>
+    </view>
+
+  </view>
+
+</template>
+
+<!--------------------------------------------------m_title_0-------------------------------------->
+
+<!--
+数据
+m_title_0_data ： [ ['软件著作权' , true] ,  ['软件著作权' , false]]
+事件：
+m_title_0_js_change
+-->
+
+<template name="m_title_0">
+
+  <view class="m_title_0_css_0">
+
+    <view class="m_title_0_css_1">
+      <block wx:for="{{m_title_0_data}}">
+        <view class="m_title_0_css_2" data-id="{{index}}" bindtap="m_title_0_js_change">
+          <text class="{{item[1] ? 'm_title_0_css_3' : ''}}">{{item[0]}}</text>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+</template>
+
+<!------------------------------------------m_part_line------------------------------------------------------->
+
+<!--
+数据：
+m_part_line_data 线条宽度
+-->
+
+<template name="m_part_line">
+
+  <view class="m_part_line_css_0" style="height:{{m_part_line_data}}rpx"></view>
+
+</template>
+
+<!--------------------------------------m_new_0------------------------------------------------------------->
+
+<!--
+数据：
+m_new_0_data : [true , '测试测试测试测试测试' , '大国之翼 516条评论 2小时前' , ['123.png' , '123.png' , '123.png']]
+
+m_new_0_data[0] 切换三张显示图片还是一张图片
+m_new_0_data[1] 标题
+m_new_0_data[2] 来源 评论 和 时间
+m_new_0_data[3] 图片
+m_new_0_data[4]
+
+-->
+
+<template name="m_new_0">
+
+  <view class="m_new_0_css_0" hidden="{{!m_new_0_data[0]}}">
+    <view class="m_new_0_css_1">
+      <view class="m_new_0_css_2" style='{{m_new_0_data[3].length == 0 ? "margin-right:20rpx;margin-bottom:64rpx" : "width: 68%;"}}'>
+        <text class="m_new_0_css_4 " style='{{is_color?"color:#777777;" : ""}}'>{{m_new_0_data[1]}}</text>
+        <text class="m_new_0_css_5">{{m_new_0_data[2]}}</text>
+      </view>
+      <!-- <block wx:for="{{m_new_0_data[3]}}"> -->
+      <image class="m_new_0_css_3" mode="aspectFit" hidden='{{m_new_0_data[3].length == 0 ? true : false}}' src="{{m_new_0_data[3][0]}}"></image>
+      <!-- </block> -->
+    </view>
+  </view>
+  <view class="m_new_0_css_6" hidden="{{m_new_0_data[0]}}">
+    <view class="m_new_0_css_7">
+      <text class="m_new_0_css_10">{{m_new_0_data[1]}}</text>
+      <view class="m_new_0_css_9">
+        <block wx:for="{{m_new_0_data[3]}}">
+          <image class="m_new_0_css_8" src="{{item}}"></image>
+        </block>
+      </view>
+      <text class="m_new_0_css_11">{{m_new_0_data[2]}}</text>
+    </view>
+  </view>
+
+
+</template>
+
+<!----------------------------------------m_new_1---------------------------------------------------->
+
+<!--
+数据：
+m_new_1_data : ['名字名字' , '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' , '07-02 08:23' , '']
+m_new_1_data[0] 评论者名字
+m_new_1_data[1] 评论内容
+m_new_1_data[2] 评论时间
+m_new_1_data[3] 头像图片
+-->
+
+
+<template name="m_new_1">
+
+  <view>
+
+    <view class="m_new_1_css_0">
+
+      <view class="m_new_1_css_1">
+        <text class="m_new_1_css_2">热门评论</text>
+        <view class="m_new_1_css_3 m_new_1_css_1" wx:for="{{m_new_1_data}}">
+          <image class="m_new_1_css_4" src="{{item[3]}}"></image>
+          <view class="m_new_1_css_5 m_new_1_css_1">
+            <view class="m_new_1_css_6 m_new_1_css_3">
+              <text class="m_new_1_css_7">{{item[0]}}</text>
+              <text class="m_new_1_css_8 iconfont icon-zan" style="{{item[5] ? 'color:red' : ''}}" data-value="{{item[6]}}" data-index="{{index}}" bindtap="add_zan">{{item[4]}}</text>
+            </view>
+            <text class="m_new_1_css_9">{{item[1]}}</text>
+            <text class="m_new_1_css_10">{{item[2]}}</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+</template>
+
+<!----------------------------------m_new_2------------------------------------------------------>
+
+<!--
+数据：
+m_new_2_data : ['测试测试测试测试试测试测试测试测试测试测试测试测试' , '中国新闻网 2017-05-01 08:33' , '']
+m_new_2_data[0] 标题
+m_new_2_data[1] 来源 时间等
+m_new_2_data[2] 内容
+-->
+
+<template name="m_new_2">
+
+  <view class="m_new_2_css_0">
+    <text class="m_new_2_css_1">{{m_new_2_data[0]}}</text>
+    <text class="m_new_2_css_2">{{m_new_2_data[1]}}</text>
+    <rich-text class="m_new_2_css_3" nodes="{{m_new_2_data[2]}}"></rich-text>
+  </view>
+
+</template>
+
+<!-------------------------------------------------m_new_3----------------------------------------->
+
+<!--
+数据：
+m_new_3_data :  [ '测试测试测试测试测试' , '大国之翼 516条评论 2小时前' , 'http://127.0.0.1:8001/static/1234.mp4']
+-->
+
+<template name="m_new_3">
+
+  <view class="m_new_0_css_6">
+    <view class="m_new_0_css_7">
+      <text class="m_new_3_css_1">{{m_new_3_data[0]}}</text>
+      <view class="m_new_0_css_9">
+        <block>
+          <video class="m_new_3_css_0" src="{{m_new_3_data[2]}}"></video>
+        </block>
+      </view>
+      <text class="m_new_0_css_11">{{m_new_3_data[1]}}</text>
+    </view>
+  </view>
+
+</template>
+
+<!-------------------------------------------------m_bottom_0-------------------------------------->
+
+<!--
+底部数据来源 和 底部快速向上箭头
+-->
+
+<!-- 数据来源显示 -->
+
+<template name="m_bottom_0">
+
+  <view class="m_bottom_0_css_0">
+    <text class="m_bottom_0_css_1">{{m_bottom_0_data ? m_bottom_0_data : '数据来源：全国企业信用公示系统'}}</text>
+  </view>
+
+</template>
+
+<!-- 快速向上箭头 -->
+
+<template name="m_bottom_1">
+  <!-- <cover-view class='m_bottom_1_css_0' bindtap="up_"> -->
+  <view class="m_bottom_1_css_0" bindtap="up_">
+    <text class="m_bottom_1_css_1 iconfont icon-up"></text>
+  </view>
+  <!-- </cover-view> -->
+</template>
+
+
+<!---------------------------------------m_content_11----------------------------------------------->
+
+<!--
+数据：
+m_content_11_data : ['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , '民事案件' , '2222' ]
+-->
+
+<template name="m_content_11">
+
+  <view class="m_content_11_css_0">
+
+    <image class="m_content_11_css_1" src="{{m_content_11_data[0]}}"></image>
+    <text class="m_content_11_css_2">{{m_content_11_data[1]}}</text>
+    <text class="m_content_11_css_3">{{m_content_11_data[2]}}</text>
+    <text class="m_content_11_css_4 iconfont icon-fanhui-copy-copy "></text>
+
+  </view>
+
+</template>
+
+<!-------------------------------------------------------------------m_content_12---------------------->
+
+<!--
+数据：
+m_content_12_data : ['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , '0测试测试测试测试测试测试测试试试测试试试测试试测试测试试测试测试试测试测试' ,[ 'OTC'] , '29' , '北京同仁堂有限公司' ,false]
+-->
+
+<template name="m_content_12">
+
+  <view class="m_content_12_css_0">
+
+    <view class="m_content_12_css_1">
+
+      <view>
+
+        <image class="m_content_12_css_2" mode="aspectFit" src="{{m_content_12_data[0] == '' || m_content_12_data[0] == 'http://img.39.net/ypk/images/nopic.gif' ? '../../images/drugs/default.png' : m_content_12_data[0]}}"></image>
+
+      </view>
+
+      <view class="m_content_12_css_3" style="{{m_content_12_data[5] ? 'margin-top:30rpx;' : ''}}">
+
+        <text class="m_content_12_css_4 m_content_12_css_7">{{m_content_12_data[1]}}</text>
+
+        <view class="m_content_12_css_5 m_content_12_css_8" hidden="{{m_content_12_data[5]}}">
+          <block wx:for="{{m_content_12_data[2]}}">
+            <text class="{{item == '' ? '' : 'm_content_12_css_12'}}">{{item}}</text>
+          </block>
+        </view>
+
+        <view class="m_content_12_css_5 m_content_12_css_9" hidden="{{m_content_12_data[5]}}">
+
+          <text class="">参考价格：</text>
+
+          <text class="m_content_12_css_6">￥{{m_content_12_data[3]}}</text>
+
+        </view>
+
+        <text class="m_content_12_css_11"></text>
+
+        <text class="m_content_12_css_5 m_content_12_css_10">{{m_content_12_data[4]}}</text>
+
+      </view>
+
+    </view>
+
+  </view>
+
+</template>
+
+<!--------------------------------------m_title_2----------------------------------------------------------------->
+
+<!--
+数据：
+
+-->
+
+<template name="m_title_2">
+
+  <view class="m_title_2_css_0">
+
+    <view class="m_title_2_css_1">
+
+      <view class="m_title_2_css_2">
+        <text class=" icon-sousuo2 iconfont"></text>
+      </view>
+
+      <view class="m_title_2_css_3">
+        <text class="">请输入药品名称</text>
+      </view>
+
+    </view>
+
+  </view>
+
+
+</template>
+
+<!------------------------------------------------m_title_3--------------------------------------->
+
+<!--
+数据：
+m_title_3_data : ['共100个商品']
+-->
+
+<template name="m_title_3">
+
+  <view class="m_title_3_css_0">
+
+    <text class='m_title_3_css_1'>{{m_title_3_data[0]}}</text>
+
+  </view>
+
+
+</template>
+
+
+
+<!-- 模块测试 -->
+
+<!--<template is="m_title" data="{{m_title_data:['登记信息',true , false]}}"></template>-->
+
+<!--<template is="m_content_0" data="{{m_content_0_data:this_data}}"></template>-->
+
+<!--<template is="m_content_1" data="{{m_content_1_data:this_data}}"></template>-->
+
+<!--<template is="m_content_2" data="{{m_content_2_data:this_data}}"></template>-->
+
+<!--<template is="m_content_3" data="{{m_content_3_data:this_data}}"></template>-->
+
+<!--<template is="m_content_4" data="{{m_content_4_data:this_data}}"></template>-->
+
+<!--<template is="m_content_5" data="{{m_content_5_data:this_data}}"></template>-->
+
+<!--<template is="m_content_6" data="{{m_content_6_data:this_data}}"></template>-->
+
+<!--<template is="m_content_7" data="{{m_content_7_data:this_data}}"></template>-->
+
+<!--<template is="m_content_8" data="{{m_content_8_data:this_data}}"></template>-->
+
+<!--<template is="m_content_9" data="{{m_content_9_data:this_data}}"></template>-->
+
+<!--<template is="m_content_10" data="{{m_content_10_data:this_data}}"></template>-->
+
+
+
+<!-- <template is="m_new_1" data="{{m_new_1_data : ['名字名字' , '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' , '07-02 08:23']}}"></template> -->
+
+<!-- <template is="m_new_2"></template> -->
+
+<!-- <template is="m_content_12" data="{{m_content_12_data : ['http://img2.imgtn.bdimg.com/it/u=1897602792,3850826136&fm=26&gp=0.jpg' , '0测试测试测试测试测试测试测试试试测试试试测试试测试测试试测试测试试测试测试' , '1测试测试测试测试测试试测试试试测试试试测试试试测试试试测试试试测试试测试测试' , '29' , '北京同仁堂有限公司' ]}}"></template> -->
+
+<!-- <template is="m_title_2"></template> -->
+
+<!-- <template is="m_title_3" data="{{m_title_3_data : ['共100个商品']}}"></template> -->
+
+
+
+<!-- 关注列表栏  -->
+
+<template name="m_guanzhu_0">
+
+
+  <navigator url="{{data[1]}}">
+
+    <view class="index_css_13">
+
+      <view class="index_css_14">
+        <text class="{{'icon-' + data[2] + ' iconfont company_index_css_11'}}"><text style="font-size:32rpx;color:#000;padding-left:10rpx;">{{data[0]}}</text></text>
+
+      </view>
+
+      <view>
+
+        <image mode="scaleToFill" class="index_css_15" src="../../images/jiantou_right.png"></image>
+
+      </view>
+
+    </view>
+
+  </navigator>
+
+</template>
+
+<template name="testTelPopup" data="{{popupIsHide,imgUrl,tel,testCode,testCodeHide,overTime}}">
+  <!--手机认证弹窗  -->
+  <view class='popup-tel-box' catchtouchmove='preventTouchMove' wx:if="{{popupIsHide}}">
+    <icon class='hide-icon' bindtap='hideBox' type='clear' size='30' color='#000000;'></icon>
+    <image class='test-banner' src='{{imgUrl}}'></image>
+    <view class='content'>
+      <input placeholder='请输入手机号码' bindinput='telInput' name="tel" value='{{tel}}' class='tel' />
+      <input placeholder='请输入验证码' bindinput='testCodeInput' name='testCode' value='{{testCode}}' class='test-code' />
+      <button wx:if="{{testCodeHide}}" class='test-code-btn' bindtap='testCodeBtn'>获取验证码</button>
+      <button wx:if="{{!testCodeHide}}" class='test-code-btn over-code'>{{overTime}}S后可发送</button>
+      <button bindtap="submitBtn" class='submit'>确认</button>
+    </view>
+  </view>
+</template>
+
+<!--余额不足提示  -->
+<template name="msgPopup" data="{{msgPopupHide}}">
+  <view class='msg-box' catchtouchmove='preventTouchMove' wx:if="{{msgPopupHide}}">
+    <view class='content'>
+      <view class='title'>余额不足</view>
+      <view class='p'>您的余额不足，请及时充值，以免影响您的正常使用！</view>
+      <view class='p color'>验证手机，赢取5.6查币！</view>
+      <view class='btn-bar'>
+        <button bindtap='cancelBnt' class='btn'>取消</button>      
+        <button bindtap='rechargeBnt' class='btn'>充值</button>
+        <button bindtap='testTel' class='btn test-btn'>手机验证</button>    
+      </view>
+    </view>
+  </view>
+</template>

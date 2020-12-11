@@ -1,0 +1,90 @@
+<!-- 设备监控 -->
+<view class='box'>
+  <view class='car-info'>
+    <view class='title'>{{ carInfo.CARMARK }}
+      <text wx:if="{{ timeD }}" class='icon'></text>
+      <text wx:if="{{ timeD == false }}" class='icon bg-red'></text>
+    </view>
+    <view class='p'>
+      <view class='left'>
+        <view class='name'>当前车速：</view>
+        <view class='info'>{{ carInfo.OSPEED || carInfo.OSPEED == '0' ? carInfo.OSPEED + 'km/h' : '-' }}</view>
+      </view>
+      <view class='right'>
+        <view class='name'>状态：</view>
+        <view class='info'>{{ carInfo.ACC == '1' ? 'ACC开' : 'ACC关' }}</view>
+      </view>
+    </view>
+    <view class='p'>
+      <view class='left'>
+        <view class='name'>里程：</view>
+        <view class='info'>{{ carInfo.ODisOfDay || carInfo.ODisOfDay == '0' ? carInfo.ODisOfDay + 'km' : '-' }}</view>
+      </view>
+      <view class='right'>
+        <view class='name'>时间：</view>
+        <view class='info'>{{ carInfo.OTime ? carInfo.OTime : '-' }}</view>
+      </view>
+    </view>
+    <view class='p'>
+      <view class='name'>当前位置：</view>
+      <view class='info'>{{ carInfo.curAddress ? carInfo.curAddress : '-' }}</view>
+    </view>
+  </view>
+  <map id="map" longitude="{{ carInfo.OLNG }}" latitude="{{ carInfo.OLAT }}" scale="{{ scale }}" bindcontroltap="controltap" markers="{{ markers }}" bindmarkertap="markertap" bindregionchange="regionchange" show-location></map>
+</view>
+<!-- 其他信息 -->
+<cover-view class='animetion-box'>
+  <cover-view class="other-info-box {{ animetions ? 'animationBottom' : 'animationTop' }}">
+    <cover-view class="other-info">
+      <cover-view class='li'>
+        <cover-view class='name'>充电状态：</cover-view>
+        <cover-view class='info'>{{ otherInfo.chargeState ? otherInfo.chargeState : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>运行模式：</cover-view>
+        <cover-view class='info'>{{ otherInfo.pattern ? otherInfo.pattern : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>剩余电量：</cover-view>
+        <cover-view class='info'>{{ otherInfo.overElectric ? otherInfo.overElectric : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>动力电池电压：</cover-view>
+        <cover-view class='info'>{{ otherInfo.volt ? otherInfo.volt : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>动力电池电流：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ampere ? otherInfo.ampere : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>DC-DC状态：</cover-view>
+        <cover-view class='info'>{{ otherInfo.DcState ? otherInfo.DcState : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>档位：</cover-view>
+        <cover-view class='info'>{{ otherInfo.gear ? otherInfo.gear : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>绝缘电阻：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ohm ? otherInfo.ohm : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>加速踏板行程：</cover-view>
+        <cover-view class='info'>{{ otherInfo.speedPedal ? otherInfo.speedPedal : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>制动踏板：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ceasePedal ? otherInfo.ceasePedal : '-' }}</cover-view>
+      </cover-view>
+    </cover-view>
+    <!-- 下拉图标 -->
+    <cover-view class="line"></cover-view>
+    <cover-view class="icon-down">
+      <cover-view bindtap='downIsUpAnimation' class='border'>
+        <cover-image wx:if="{{ !animetions }}" class='icon' src='/images/map/iconDown.png'></cover-image>
+        <cover-image wx:if="{{ animetions }}" class='icon' src='/images/map/iconUp.png'></cover-image>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+<cover-view class="refresh" bindtap='clickRefresh'>刷新</cover-view>

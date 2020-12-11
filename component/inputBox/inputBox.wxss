@@ -1,0 +1,77 @@
+/* component/inputBox/inputBox.wxss */
+@import '../iconAli.wxss';
+
+.parentNode {
+  position: relative;
+}
+
+.sonNode {
+  position: absolute;
+}
+
+.c-inputBox_css_0 {
+  width: 690rpx;
+  height: 80rpx;
+  border: 1rpx solid #f00;
+  background-color: #f7f7f7;
+  border-radius: 8rpx;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+  margin-bottom: 15rpx;
+  margin-right: 30rpx;
+}
+
+.c-inputBox_css_1 {
+  font-size: 30rpx;
+  /* top: 20rpx; */
+  line-height: 80rpx;
+  height: 80rpx;
+  left: 15rpx;
+  color: #f19100;
+}
+
+.c-inputBox_css_2 {
+  font-size: 30rpx;
+  /* top: 15rpx; */
+  line-height: 80rpx;
+  height: 80rpx;
+  left: 30rpx;
+}
+
+.c-inputBox_css_3 {
+  width: 500rpx;
+  font-size: 30rpx;
+  /* top: 8rpx; */
+  line-height: 80rpx;
+  height: 80rpx;
+  left: 140rpx;
+}
+
+.c-inputBox_css_4 {
+  color: red;
+  top: -10rpx;
+  left: 40rpx;
+  font-size: 24rpx;
+}
+
+.c-inputBox_css_5 {
+  width: 750rpx;
+  height: 30rpx;
+}
+
+.c-inputBox_css_6 {
+  top: 20rpx;
+  left: 650rpx;
+}
+
+.c-inputBox_css_7 {
+  font-size: 30rpx;
+  color: #acacac;
+}
+
+.c-inputBox_css_8 {
+  width: 500rpx;
+  font-size: 30rpx;
+  top: 15rpx;
+  left: 140rpx;
+}

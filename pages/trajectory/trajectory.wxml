@@ -1,0 +1,71 @@
+<!--pages/lookupLocation/trajectory/trajectory.wxml-->
+<import src='/component/template.wxml' />
+<view style='width:750rpx;margin-top:-1rpx;'>
+  <image style='width:750rpx;height:360rpx;display:block;' src='/images/trajectory/topImg.png'></image>
+</view>
+<scroll-view>
+  <view>
+    <view class='parentNode c-inputBox_css_0 ' style='border: 1rpx solid #777777;'>
+      <text class='sonNode c-inputBox_css_1'>*</text>
+      <text class='sonNode c-inputBox_css_2'>车牌号</text>
+      <input placeholder='请输入车牌号' class='sonNode c-input_css_3' style='border:none;' bindinput='inputVNo' value='{{plateNo}}' />
+    </view>
+    <cover-view wx:if="{{ searchValue && carNumIsVINList.length > 0 }}" class="SIM-scroll">
+      <cover-view class='SIM-list'>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ item.CARMARK && item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view class='text'>{{ item.carNumLeft }}</cover-view>
+          <cover-view class="f19100">{{ item.carNumCenter }}</cover-view>
+          <cover-view class='text'>{{ item.carNumRight }}/{{ item.VINLeft }}</cover-view>
+          <cover-view class="f19100">{{ item.VINCenter }}</cover-view>
+          <cover-view class='text'>{{ item.VINRight }}</cover-view>
+        </cover-view>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ item.CARMARK && !item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view>{{ item.carNumLeft }}</cover-view>
+          <cover-view class="f19100">{{ searchValue }}</cover-view>
+          <cover-view>{{ item.carNumRight }}</cover-view>
+        </cover-view>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ !item.CARMARK && item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view>{{ item.VINLeft }}</cover-view>
+          <cover-view class="f19100">{{ searchValue }}</cover-view>
+          <cover-image>{{ item.VINRight }}</cover-image>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <view class='parentNode c-inputBox_css_5' style='margin-top:20rpx;' hidden='{{isNone0}}'>
+      <text class='sonNode iconfont icon-iconfontcolor92 c-inputBox_css_4' style='font-size:26rpx;'>车牌号格式有误</text>
+    </view>
+    <view class='parentNode c-inputBox_css_0 ' style='border: 1rpx solid #777777;'>
+      <text class='sonNode c-inputBox_css_1'></text>
+      <text class='sonNode c-inputBox_css_2'>开始时间</text>
+      <picker class='sonNode c-inputBox_css_7 c-input_css_3' mode="multiSelector" value='{{startTimeValue}}' bindchange='bindStartTimeChange' range='{{startTimeArr}}'>{{startTime}}</picker>
+    </view>
+    <view class='parentNode c-inputBox_css_0 ' style='border: 1rpx solid #777777;'>
+      <text class='sonNode c-inputBox_css_1'></text>
+      <text class='sonNode c-inputBox_css_2'>结束时间</text>
+      <picker class='sonNode c-inputBox_css_7 c-input_css_3' mode="multiSelector" value='{{endTimeValue}}' bindchange='bindEndTimeChange' range='{{endTimeArr}}'>{{endTime}}</picker>
+    </view>
+  </view>
+
+  <button bindtap='query' class='p-lookup_css_1'>查询</button>
+  
+  <view class='record-box' style='padding: 0 0 60rpx;' wx:if="{{recordIsHide}}">
+    <view class='p-searchPage_css_5' style='margin-top:30rpx;'></view>
+    <!--查询记录  -->
+    <view class='p_history_css_0 ' style='width:690rpx;margin-left:30rpx;margin-top:30rpx;border-bottom:'>
+      <text class='p_history_css_2 iconfont icon-sousuo ' style='font-size:28rpx;color:#777777;'></text>
+      <label class='p_history_css_1 ' style='font-size:28rpx;color:#777777;margin-left:20rpx;'>
+        查询记录
+      </label>
+    </view>
+    <view style='width:750rpx;height:3rpx;background-color:#eeeeed;margin-top:10rpx;'></view>
+    <scroll-view scroll-y class='p_history_css_0 ' style='width:690rpx;margin-left:30rpx;overflow:hidden;height:{{height}}rpx;'>
+      <view style='width:690rpx;height:60rpx;line-height:60rpx;' wx:for="{{queryRecordList}}">
+        <view bindtap='toSearch' data-item='{{item}}' class='p-searchHistory_css_1 ' style='width:660rpx;float:left;'>
+          <view style='font-size:28rpx;color:#222222;float:left;'>{{item.PlateNo}}</view>
+        </view>
+        <text class='icon-iconfontcolor92  iconfont' style='font-size:28rpx;color:#777777;float:left;' data-index='{{index}}' catchtap='btnRemove'></text>
+      </view>
+    </scroll-view>
+  </view>
+  <slot></slot>
+</scroll-view>

@@ -1,0 +1,40 @@
+.box{
+  padding: 100rpx 30rpx 0;
+  background: #eee;
+}
+.logo{
+  width: 171rpx;
+  height: 93rpx;
+  margin: 0 auto;
+  display: block;
+}
+.title{
+  padding: 0 0 10rpx;
+  font-size: 30rpx;
+  color: #222;
+  text-align: center;
+  line-height: 70rpx;
+}
+.input-bar{
+  height: 80rpx;
+}
+.input-bar .name{
+  float: left;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #222;
+}
+.input-bar .input{
+  /* float: right; */
+  /* width: 530rpx; */
+  position: relative;
+}
+
+.input-bar input{
+  /* width: 530rpx; */
+  display: block;
+}
+.submit{
+  margin: 90rpx 0 0;
+  width: 100%;
+}

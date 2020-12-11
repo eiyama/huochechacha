@@ -1,0 +1,113 @@
+<!--设置-->
+<view class='box'>
+  <view class='top'>
+    <view bindtap='prevPage' class="one active">
+      <view class='num'>1</view>
+      <view class='title'>平台设置</view>
+    </view>
+    <view class="two {{ curIndex == '1' ? 'active' : '' }}">
+      <view class='num'>2</view>
+      <view class='title'>设备设置</view>
+    </view>
+    <view class='line'></view>
+  </view>
+  <!-- 平台设置 -->
+  <view wx:if="{{ oneIsShow }}" class='set-platform'>
+    <view class='sn-bar'>
+      设备SIM：
+      <text>{{ oneForm.CARID }}</text>
+    </view>
+    <view class='form-bar'>
+      <view class='li'>
+        <view class='name'>
+          <text class="red">*</text>车牌号：</view>
+        <input bindinput='getCarNum' bindfocus="changeFocusCar" bindblur='changeBlurCar' value='{{ oneForm.CARMARK }}' />
+      </view>
+      <view class='li'>
+        <view class='name'>
+          <text class="red">*</text>VIN码：</view>
+        <input bindfocus="changeFocusVIN" bindblur='changeBlurVIN' bindinput='getVIN' value='{{ oneForm.VIN }}' />
+      </view>
+      <view class='li'>
+        <view class='name'>
+          <text class="red">*</text>SIM卡号：</view>
+        <input bindinput='getSIM' value='{{ oneForm.SIMNO }}' />
+      </view>
+      <view class='li'>
+        <view class='name'>
+          <text class="red">*</text>设备类型：</view>
+        <picker class="picker" bindchange="bindPickerChange" value="{{ index }}" range="{{ array }}" range-key='DeviceName'>
+          <input placeholder='请选择设备类型' disabled value='{{ deviceName }}' />
+        </picker>
+        <view class='icon'></view>
+      </view>
+      <view class='li'>
+        <view class='name'>
+          <text class="red">*</text>所属组织：</view>
+        <picker class="picker" bindchange="bindPickerChangeDepartment" value="{{ key }}" range="{{ departmentList }}" range-key='DptName'>
+          <input placeholder='请选择所属组织' disabled value='{{ dptName }}' />
+        </picker>
+        <view class='icon'></view>
+      </view>
+      <view class='li'>
+        <view class='name'>安装人员：</view>
+        <picker class="picker" bindchange="bindPickerChangeName" value="{{ num }}" range="{{ nameList }}">
+          <input placeholder='请选择安装人员' disabled value='{{ name }}' />
+        </picker>
+        <view class='icon'></view>
+      </view>
+    </view>
+    <button hover-class='none' bindtap='tapNext' class='next-btn'>下一步</button>
+  </view>
+  <!-- SIM卡设置 -->
+  <view wx:if="{{ !oneIsShow }}" class='set-SIM'>
+    <view class='msg'>
+      <view class='msg-icon'>!</view>
+      请确认设备电源已接通，电源接通后，发送设备激活短信！
+    </view>
+    <view class='btn-bar'>
+      <button bindtap='tapSMS' wx:if="{{ btnShow || idIs3 }}" hover-class='none' class='two-btn btn left-btn'>发送激活短信</button>
+      <button wx:if="{{ !btnShow && !idIs3 }}" hover-class='none' class='no-click-btn left-btn btn'>发送激活短信</button>
+      <button wx:if="{{ !btnShow || idIs3 }}" bindtap='queryState' hover-class='none' class='right-btn two-btn btn'>状态查询</button>
+      <button wx:if="{{ btnShow && !idIs3 }}" hover-class='none' class='no-click-btn btn right-btn'>状态查询</button>
+    </view>
+    <view style="opacity: {{ queryList.length > 0 || list.length > 0 ? '1' : '0' }};" class='current'>发送状态</view>
+    <view class='scroll-model'>
+      <scroll-view style="height: {{ scrollH + 'px' }};" scroll-y wx:if="{{ list.length > 0 || queryList.length > 0 }}" class='list-box'>
+        <view wx:if="{{ list.length > 0 }}" class='details'>
+          <view wx:if="{{ item.result.Code != 0 }}" class='li' wx:for="{{ list }}">
+            <view class='li-bar'>
+              <image src='/images/setData/emailIcon.png'></image>
+              <view class='date'>{{ item.date }}</view>
+              <view wx:if="{{ item.result.Code == 0 }}" class='success'>发送成功</view>
+              <view wx:if="{{ item.result.Code != 0 }}" class='fail'>发送失败</view>
+              <button bindtap='resendOne' data-id='1' data-item="{{ item }}" hover-class='none' wx:if="{{ item.result.Code != 0 }}" class='resend'>重发</button>
+            </view>
+            <view class='p'>{{ item.result.Directive }}</view>
+          </view>
+        </view>
+        <view wx:if="{{ queryList.length > 0 }}" class='details'>
+          <view wx:if="{{ item.code != 200 }}" class='li' wx:for="{{ queryList }}">
+            <view class='li-bar'>
+              <image wx:if="{{ item.type != '下行' }}" src='/images/setData/uploadIcon.png'></image>
+              <image wx:if="{{ item.type == '下行' }}" src='/images/setData/downIcon.png'></image>
+              <view class='date'>{{ item.time }}</view>
+              <view wx:if="{{ item.sendState == '成功' }}" class='success'>发送成功</view>
+              <view wx:if="{{ item.sendState != '成功' }}" class='fail'>发送失败</view>
+              <button bindtap='resend' hover-class='none' data-id='2' data-item="{{ item }}" wx:if="{{ item.sendState != '成功' }}" class='resendTwo'>重发</button>
+            </view>
+            <view class='p'>{{ item.content }}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view style="height:120rpx;visibility: {{ queryList.length > 0 || list.length > 0 ? 'auto' : 'hidden' }};" class='query-bar'>
+      <view class='left'>等待设备上线......</view>
+      <button hover-class='none' bindtap='queryCarInfo' class='query-btn'>查看车辆上线情况</button>
+    </view>
+    <!-- <view wx:if="{{ list.length > 0 || queryList.length > 0 }}" class="more-set">
+      <button bindtap='moreSet' class='set-btn btn'>更多设置</button>
+      <view bindtap='uoloadInfo' class='upload-info btn'>上传资料</view>
+    </view> -->
+  </view>
+</view>

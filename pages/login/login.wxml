@@ -1,0 +1,16 @@
+<!-- 登录页 -->
+<view class='box'>
+  <image src='/images/index/logo.png' class='logo'></image>
+  <view class='title'>AI车管家</view>
+  <view class='input-bar'>
+    <!-- <view class='name'>登录名：</view> -->
+    <view class='input'>
+      <input bindinput='getUserName' placeholder='请输入登录名' value='{{ userName }}' />    
+      <view wx:if="{{ isValueEmpty }}" class='test-msg'>
+        <image src='/images/index/errorIcon.png'></image>
+        登录名不能为空！
+      </view>
+    </view>
+  </view>
+  <button bindtap='clickLogin' hover-class="none" class='submit'>登录</button>
+</view>

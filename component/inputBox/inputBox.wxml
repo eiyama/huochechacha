@@ -1,0 +1,20 @@
+<view>
+  <view class='parentNode c-inputBox_css_0 ' style='{{isNone ? "border: 1rpx solid #777777;" : "border: 1rpx solid #f00;"}}'>
+
+    <text class='sonNode c-inputBox_css_1' hidden='{{isImportent}}'>*</text>
+    <text class='sonNode c-inputBox_css_2'>{{title}}</text>
+    <picker bindchange='onChange' wx:if='{{isPicker}}' class='sonNode c-inputBox_css_7 c-inputBox_css_8' mode="region" data-code='{{code}}'>{{placeholder}}</picker>
+    <input wx:else  bindfocus="onFocus" bindblur="onBlur" bindinput="inputClick" data-code='{{code}}' placeholder='{{placeholder}}' placeholder-class='c-inputBox_css_7' value='{{value}}' class='sonNode c-inputBox_css_3' />
+
+ 
+
+    <text hidden='{{isArrow}}' class='sonNode iconfont icon-jiantou c-inputBox_css_6'></text>
+
+  </view>
+  <view class='parentNode c-inputBox_css_5' hidden='{{isNone}}'>
+    <text class=' sonNode iconfont icon-iconfontcolor92 c-inputBox_css_4'>此处不能为空</text>
+  </view>
+
+  <slot></slot>
+
+</view>

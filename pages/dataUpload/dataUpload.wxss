@@ -1,0 +1,92 @@
+.box{
+  padding: 0 30rpx;
+}
+.input-bar{
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0 0 20rpx;
+  position: relative;
+}
+.input-bar image{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 55rpx;
+  right: 20rpx;
+  z-index: 99;
+}
+.input-bar .query-input{
+  padding-right: 60rpx;
+}
+.input-bar .active{
+  border-color: #f19100;
+}
+.input-bar .name{
+  width: 152rpx;
+  line-height: 80rpx;
+  color: #222;
+  font-size: 28rpx;
+}
+.input-bar input{
+  width: 510rpx;
+}
+.input-bar .red{
+  color: red;
+}
+.current{
+  display: flex;
+  padding: 40rpx 20rpx 0;
+}
+.current .icon{
+  width: 8rpx;
+  height: 36rpx;
+  background: #f19100;
+  margin: 1rpx 0 0;
+}
+.current .title{
+  flex: 1;
+  line-height: 36rpx;
+  font-size: 28rpx;
+  color: #222;
+  border-bottom: 1rpx solid #bfbfbf;
+  padding-left: 10rpx;
+}
+.img-bar{
+  padding: 20rpx 36rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+.img-bar image,.other-bar .img-bg,.img-bar .img-bg{
+  width: 276rpx;
+  height: 144rpx;
+}
+.other-bar .img-bg,.img-bar .img-bg{
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.other-bar .img-bg image,.img-bar .img-bg image{
+  width: 47rpx;
+  height: 37rpx;
+  display: block;
+}
+.current-bar{
+  display: flex;
+  justify-content: space-between;
+}
+.current-bar .current{
+  width: 310rpx;
+}
+.other-bar{
+  overflow: hidden;
+  margin-left: -28rpx;
+}
+.other-bar .img-bg{
+  float: left;
+  margin: 20rpx 0 0 68rpx;
+}
+.submit{
+  margin: 80rpx 0 20rpx;
+}

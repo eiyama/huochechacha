@@ -1,0 +1,131 @@
+<!-- Gps查询页面 -->
+<view class='box'>
+  <view class='select-bar' wx:if='{{loginUserType!=2}}'>
+    <view class='left'>
+      <picker bindchange="bindPickerChangeLeft" range-key="Name" value="{{ index }}" range="{{ userNameList }}">
+        <input class='picker' disabled placeholder='请选择客户' value="{{ userNameList[index].Name }}" />
+        <image src='/images/map/whiteDownIcon.png' class='icon'></image>
+      </picker>
+    </view>
+    <view class='right'>
+      <picker bindchange="bindPickerChangeRight" value="{{ key }}" range="{{ searchTypeList }}">
+        <input class='picker' disabled placeholder='请选择搜索条件' value="{{ searchTypeList[key] }}" />
+        <image src='/images/map/whiteDownIcon.png' class='icon'></image>
+      </picker>
+    </view>
+  </view>
+  <view class='input-bar'>
+    <input value='{{ searchValue }}' bindinput='getCarNumIsVIN' disabled='{{inputDisabled}}' placeholder='{{ placeholder }}' class='input' />
+    <image bindtap='searchCarInfo' src='/images/map/yellowSearchIcon.png'></image>
+    <cover-view wx:if="{{ searchValue && carNumIsVINList.length > 0 }}" class="SIM-scroll">
+      <cover-view class='SIM-list'>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ item.CARMARK && item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view class='text'>{{ item.carNumLeft }}</cover-view>
+          <cover-view class="f19100">{{ item.carNumCenter }}</cover-view>
+          <cover-view class='text'>{{ item.carNumRight }}/{{ item.VINLeft }}</cover-view>
+          <cover-view class="f19100">{{ item.VINCenter }}</cover-view>
+          <cover-view class='text'>{{ item.VINRight }}</cover-view>
+        </cover-view>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ item.CARMARK && !item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view>{{ item.carNumLeft }}</cover-view>
+          <cover-view class="f19100">{{ searchValue }}</cover-view>
+          <cover-view>{{ item.carNumRight }}</cover-view>
+        </cover-view>
+        <cover-view wx:for="{{ carNumIsVINList }}" bindtap='clickCarInfo' wx:if="{{ !item.CARMARK && item.VIN }}" data-index="{{ index }}" wx:key="{{ index }}" class='SIM-li'>
+          <cover-view>{{ item.VINLeft }}</cover-view>
+          <cover-view class="f19100">{{ searchValue }}</cover-view>
+          <cover-image>{{ item.VINRight }}</cover-image>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </view>
+  <map id="map" longitude="{{ carInfo.OLNG }}" latitude="{{ carInfo.OLAT }}" scale="{{ scale }}" bindcontroltap="controltap" markers="{{ markers }}" bindmarkertap="markertap" show-location></map>
+  <!-- 其他信息 -->
+<cover-view wx:if="{{ infoIsShow }}" class="animetion-box {{ animetions ? 'animationBottom' : 'animationTop' }}">
+  <cover-view class="other-info-box ">
+    <cover-view class="line"></cover-view>
+    <cover-view class='car-info' style='height:{{loginUserName!=2?"202rpx":"252rpx"}};'>
+      <cover-view class='title'>
+      <cover-view class='car-num'>{{ carInfo.CARMARK }}</cover-view>
+        <cover-view wx:if="{{ timeD }}" class='icon'></cover-view>
+        <cover-view wx:if="{{ timeD == false }}" class='icon bg-red'></cover-view>
+        <cover-view  style='width:200rpx;margin-top:12rpx;margin-left:200rpx;float:left;color:blue;text-decoration:underline;' bindtap='btnToTrajectory'>轨迹查询</cover-view>
+        <cover-image class="refresh" bindtap='clickRefresh' src='/images/map/refresh.png'></cover-image>
+      </cover-view>
+      <cover-view class='p'>
+        <cover-view class='left'>
+          <cover-view class='name'>当前车速：</cover-view>
+          <cover-view class='info'>{{ carInfo.OSPEED || carInfo.OSPEED == '0' ? carInfo.OSPEED + 'km/h' : '-' }}</cover-view>
+        </cover-view>
+        <cover-view class='right'>
+          <cover-view class='name'>状态：</cover-view>
+          <cover-view class='info'>{{ carInfo.ACC == '1' ? 'ACC开' : 'ACC关' }}</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class='p'>
+        <cover-view class='left'>
+          <cover-view class='name'>里程：</cover-view>
+          <cover-view class='info'>{{ carInfo.ODisOfDay || carInfo.ODisOfDay == '0' ? carInfo.ODisOfDay + 'km' : '-' }}</cover-view>
+        </cover-view>
+        <cover-view class='right'>
+          <cover-view class='name'>时间：</cover-view>
+          <cover-view class='info'>{{ carInfo.OTime ? carInfo.OTime : '-' }}</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view class='p'>
+        <cover-view class='name'>当前位置：</cover-view>
+        <cover-view class='info'>{{ carInfo.curAddress ? carInfo.curAddress : '-' }}</cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view class="other-info">
+      <cover-view class='li'>
+        <cover-view class='name'>充电状态：</cover-view>
+        <cover-view class='info'>{{ otherInfo.chargeState ? otherInfo.chargeState : '-'}}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>运行模式：</cover-view>
+        <cover-view class='info'>{{ otherInfo.pattern ? otherInfo.pattern : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>剩余电量：</cover-view>
+        <cover-view class='info'>{{ otherInfo.overElectric ? otherInfo.overElectric : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>动力电池电压：</cover-view>
+        <cover-view class='info'>{{ otherInfo.volt ? otherInfo.volt : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>动力电池电流：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ampere ? otherInfo.ampere : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>DC-DC状态：</cover-view>
+        <cover-view class='info'>{{ otherInfo.DcState ? otherInfo.DcState : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>档位：</cover-view>
+        <cover-view class='info'>{{ otherInfo.gear ? otherInfo.gear : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>绝缘电阻：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ohm ? otherInfo.ohm : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>加速踏板行程：</cover-view>
+        <cover-view class='info'>{{ otherInfo.speedPedal ? otherInfo.speedPedal : '-' }}</cover-view>
+      </cover-view>
+      <cover-view class='li'>
+        <cover-view class='name'>制动踏板：</cover-view>
+        <cover-view class='info'>{{ otherInfo.ceasePedal ? otherInfo.ceasePedal : '-' }}</cover-view>
+      </cover-view>
+    </cover-view>
+    <!-- 下拉图标 -->
+    <cover-view class="icon-down" wx:if='{{loginUserName!=2}}'>
+      <cover-view bindtap='downIsUpAnimation' class='border'>
+        <cover-image wx:if="{{ animetions }}" class='icon' src='/images/map/iconUp.png'></cover-image>
+        <cover-image wx:if="{{ !animetions }}" class='icon' src='/images/map/iconDown.png'></cover-image>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+</view>

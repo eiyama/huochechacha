@@ -1,0 +1,237 @@
+.box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background: #f19100;
+}
+
+.select-bar .left, .select-bar .right {
+  flex: 1;
+  position: relative;
+}
+
+i
+.select-bar .left, .select-bar .right {
+  flex: 1;
+}
+
+.select-bar .picker {
+  border: none;
+  height: 60rpx;
+  padding: 0 60rpx;
+  color: #fff;
+  background: none;
+}
+
+.select-bar .icon {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 50rpx;
+  z-index: 999;
+}
+
+.input-bar {
+  padding: 20rpx 30rpx;
+  position: relative;
+  background: #f19100;
+}
+
+.input-bar .input {
+  padding-right: 70rpx;
+  border: none;
+}
+
+.select-bar .input-placeholder {
+  color: #fff;
+}
+
+.input-bar image {
+  position: absolute;
+  top: 40rpx;
+  right: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  z-index: 999;
+}
+
+#map {
+  width: 100%;
+  flex: 1;
+}
+
+.car-info {
+  padding: 10rpx 30rpx;
+  height: 202rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 24rpx;
+  background: #fff;
+}
+
+.title {
+  overflow: hidden;
+}
+
+.title  .car-num {
+  float: left;
+  font-size: 28rpx;
+  color: #222;
+  font-weight: bold;
+  line-height: 60rpx;
+}
+
+.title .icon {
+  width: 32rpx;
+  height: 32rpx;
+  background: #2fad03;
+  margin: 12rpx 0 0 20rpx;
+  border-radius: 50%;
+  float: left;
+}
+
+.car-info .p .name, .other-info .li, .car-info .p .info {
+  line-height: 44rpx;
+}
+
+.p .left, .p .right, .p, .other-info .li {
+  display: flex;
+}
+
+.p .left, .p .right {
+  flex: 1;
+}
+
+.p .name, .other-info .name {
+  color: #333;
+}
+
+.p .info, .other-info .info {
+  color: #999;
+  margin-left: 6rpx;
+}
+
+.line {
+  height: 2rpx;
+  background: #bfbfbf;
+  z-index: 998;
+}
+
+.icon-down {
+  width: 120rpx;
+  height: 36rpx;
+  overflow: hidden;
+  position: absolute;
+  top: 2rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  z-index: 9999;
+}
+
+.icon-down .border {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: #bfbfbf 2rpx solid;
+  background: #fff;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.icon-down .icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.refresh {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top:10rpx;
+  float: right;
+}
+
+.animetion-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.other-info-box {
+  overflow: hidden;
+  z-index: 0;
+  padding: 36rpx 0 0;
+}
+
+.other-info {
+  background: #fff;
+  padding: 0 30rpx 10rpx;
+  box-sizing: border-box;
+  /* animation: icon-rotate 1s linear infinite; */
+}
+
+.other-info .li {
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+  height: 44rpx;
+}
+
+.animationTop {
+  /* transform: translateY(234rpx); */
+  transition: all 0.5s;
+  bottom: 0;
+}
+
+.animationBottom {
+  /* transform: translateY(0); */
+  transition: all 0.5s;
+  bottom: -234rpx;
+}
+
+.SIM-scroll {
+  height: 500rpx;
+  /* overflow: hidden; */
+  position: absolute;
+  left: 30rpx;
+  top: 99rpx;
+  width: 690rpx;
+  z-index: 9999;
+  background: #fff;
+  padding: 20rpx 0 0;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+.SIM-list {
+  padding: 0 20rpx;
+}
+
+.SIM-list .SIM-li {
+  font-size: 28rpx;
+  color: #666;
+  width: 100%;
+  overflow: hidden;
+}
+
+.SIM-list .SIM-li cover-view {
+  float: left;
+  line-height: 54rpx;
+}
+
+.title .bg-red {
+  background: red;
+}

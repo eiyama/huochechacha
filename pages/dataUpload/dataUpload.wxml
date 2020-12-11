@@ -1,0 +1,82 @@
+<view class="box">
+  <view class='input-bar'>
+    <view class='name'>
+      <text wx:if="{{ curQuery }}" class="red">*</text>车牌号码：</view>
+    <input bindfocus="changeFocusCar" bindblur='changeBlurCar' bindinput='getCarNum' class="query-input {{ activeCar ? 'active' : '' }}" value='{{ formInfo.carNum }}' />
+    <image wx:if="{{ curQuery && !activeCar}}" bindtap='clickQuery' src='/images/map/searchIcon.png'></image>
+    <image wx:if="{{ curQuery && activeCar }}" bindtap='clickQuery' src='/images/map/yellowSearchIcon.png'></image>
+  </view>
+  <view class='input-bar'>
+    <view class='name'>
+      <text wx:if="{{ !curQuery }}" class="red">*</text>设备VIN：</view>
+    <input bindfocus="changeFocusVIN" bindblur='changeBlurVIN' bindinput='getVIN' class="query-input {{ activeVIN ? 'active' : '' }}" value='{{ formInfo.VIN }}' />
+    <image wx:if="{{ !curQuery && !activeVIN }}" bindtap='clickQuery' src='/images/map/searchIcon.png'></image>
+    <image wx:if="{{ !curQuery && activeVIN }}" bindtap='clickQuery' src='/images/map/yellowSearchIcon.png'></image>
+  </view>
+  <view class='input-bar'>
+    <view class='name'>司机姓名：</view>
+    <input bindinput='getDriverName' value='{{ formInfo.driverName }}' />
+  </view>
+  <view class='input-bar'>
+    <view class='name'>联系方式：</view>
+    <input bindinput='getTel' value='{{ formInfo.tel }}' />
+  </view>
+  <view class='current'>
+    <view class='icon'></view>
+    <view class='title'>行驶证照片</view>
+  </view>
+  <view class='img-bar'>
+    <image bindtap='clickUpImg' data-id='1' src='{{ formInfo.mainImg1 }}'></image>
+    <image bindtap='clickUpImg' data-id='2' src='{{ formInfo.mainImg2 }}'></image>
+  </view>
+  <view class='current'>
+    <view class='icon'></view>
+    <view class='title'>车辆登记证</view>
+  </view>
+  <view class='img-bar'>
+    <image bindtap='clickUpImg' data-id='3' src='{{ formInfo.mainImg3 }}'></image>
+    <image bindtap='clickUpImg' data-id='4' src='{{ formInfo.mainImg4 }}'></image>
+  </view>
+  <view class='current-bar'>
+    <view class='current'>
+      <view class='icon'></view>
+      <view class='title'>驾驶证首页</view>
+    </view>
+    <view class='current'>
+      <view class='icon'></view>
+      <view class='title'>车头45°照</view>
+    </view>
+  </view>
+  <view class='img-bar'>
+    <image bindtap='clickUpImg' data-id='5' src='{{ formInfo.mainImg5 }}'></image>
+    <image bindtap='clickUpImg' data-id='6' src='{{ formInfo.mainImg6 }}'></image>
+  </view>
+  <view class='current-bar'>
+    <view class='current'>
+      <view class='icon'></view>
+      <view class='title'>设备SIM</view>
+    </view>
+    <view class='current'>
+      <view class='icon'></view>
+      <view class='title'>SIM卡</view>
+    </view>
+  </view>
+  <view class='img-bar'>
+    <view class='img-bg' data-id='7' bindtap='clickUpImg'>
+      <image src='{{ formInfo.mainImg7 }}'></image>
+    </view>
+    <view class='img-bg' data-id='8' bindtap='clickUpImg'>
+      <image src='{{ formInfo.mainImg8 }}'></image>
+    </view>
+  </view>
+  <view class='current'>
+    <view class='icon'></view>
+    <view class='title'>其他照片</view>
+  </view>
+  <view class='other-bar'>
+    <view class='img-bg' wx:for="{{ otherImgList }}" bindtap='clickUpImg' wx:key="{{ index }}" data-id='9'>
+      <image src='{{ item.imgUrl }}'></image>
+    </view>
+  </view>
+  <button hover-class='none' class='submit' bindtap='formSubmit'>提交</button>
+</view>

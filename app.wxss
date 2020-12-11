@@ -1,0 +1,82 @@
+button, input {
+  padding: 0;
+  margin: 0;
+  border-radius: 6rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+}
+
+button {
+  background: #f19100;
+  color: #fff;
+  font-size: 28rpx;
+  border: none;
+  text-align: center;
+}
+
+input {
+  border: 1rpx solid #cacaca;
+  color: #666;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  background: #f7f7f7;
+}
+
+.input-placeholder {
+  color: #777;
+  font-size: 28rpx;
+}
+
+.space {
+  opacity: 0;
+}
+
+.box {
+  width: 750rpx;
+  min-height: 100%;
+  box-sizing: border-box;
+  background: #eee;
+}
+
+page {
+  height: 100%;
+}
+
+view, text, navigator {
+  font-size: 24rpx;
+}
+
+.test-msg {
+  line-height: 40rpx;
+  height: 40rpx;
+  color: red;
+  padding-left: 10rpx;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.test-msg image {
+  float: left;
+  width: 24rpx;
+  height: 24rpx;
+  margin: 8rpx 0 0;
+}
+
+.clearFloat:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearFloat {
+  zoom: 1;
+}
+.f19100{
+  color: #f19100;
+  font-size: 28rpx;
+}

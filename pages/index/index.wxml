@@ -1,0 +1,56 @@
+<view class="box" hidden='{{notmy}}'>
+  <image src='/images/index/logo.png' class='logo'></image>
+  <view class='input-bar'>
+    <view class='li clearFloat'>
+      <view class='name'>客
+        <text class='space'>SIM</text>户：</view>
+      <picker class='picker' bindchange="bindPickerChange" value="{{ index }}" range="{{array}}" range-key="Name">
+        <input placeholder='请选择客户' disabled value='{{ array[index].Name }}' />
+      </picker>
+      <view class='icon'></view>
+    </view>
+    <view class='li clearFloat'>
+      <view class='name'>设备SIM：</view>
+      <view class='input'>
+        <input bindinput='getSIM' placeholder='请输入设备SIM' value='{{ SIM }}' />
+        <view wx:if="{{ isValueEmpty }}" class='test-msg'>
+          <image src='/images/index/errorIcon.png'></image>
+          设备SIM不能为空！
+        </view>
+        <scroll-view wx:if="{{ SIM && SIMList.length > 0 }}" class="SIM-scroll" scroll-y>
+          <view class='SIM-list'>
+            <view wx:for="{{ SIMList }}" data-id="{{ item.CARID }}" bindtap='clickQuery' wx:key="{{ index }}" class='SIM-li'>
+              {{ item.left }}
+              <text class="f19100">{{ SIM }}</text>{{ item.right }}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <button hover-class='none' data-id="{{ SIM }}" bindtap='clickQuery' class='query'>查询</button>
+  <view class='btn-bar'>
+    <view bindtap='linkUpInfo' class='left'>安装资料上传</view>
+    <view bindtap='linkRecordList' class='right'>安装记录</view>
+  </view>
+  <view class='query-location'>
+    <text bindtap='linkQueryLocation'>查询车辆位置</text>
+  </view>
+  <view class='query-location'>
+    <text bindtap='btnExit'>退出</text>
+  </view>
+</view>
+
+<view hidden='{{ismy}}'>
+  <image src='/images/index/topbg.png' class='mytopbg'></image>
+  <view class='mybox'>
+    <view class='btnbox'>
+      <image src='/images/index/location.png' class='btnimg' bindtap='linkQueryLocation'></image>
+      <view class='btntext' >车辆位置</view>
+    </view>
+    <view class='btnbox'>
+      <image src='/images/index/trajectory.png' class='btnimg' bindtap='linkQueryTrajectory'></image>
+      <view class='btntext'>车辆轨迹</view>
+    </view>
+  </view>
+  <view class='btnExit' bindtap='btnExit'>退出登录</view>
+</view>

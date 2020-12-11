@@ -1,0 +1,86 @@
+/* pages/lookupLocation/trajectory/trajectory.wxss */
+@import '/component/inputBox/inputBox.wxss';
+@import "/component/iconAli.wxss";
+@import '/component/template.wxss';
+
+
+.c-input_css_3 {
+  width: 500rpx;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  left: 160rpx;
+}
+
+.p-lookup_css_1 {
+  width: 690rpx;
+  font-size: 30rpx;
+  background-color: #f19100;
+  color: #fff;
+  height: 80rpx;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  border-radius: 4rpx;
+}
+
+.p-lookup_css_2 {
+  margin-left: 30rpx;
+  width: 690rpx;
+  font-size: 28rpx;
+  background-color: #f7f7f7;
+  color: red;
+  height: 120rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-radius: 4rpx;
+}
+
+.p-lookup_css_3 {
+  margin-left: 10rpx;
+  padding-top: 20rpx;
+}
+
+.p-lookup_css_4 {
+  margin-left: 10rpx;
+  padding-top: 15rpx;
+}
+
+.test-tel-btn{
+  margin: 30rpx auto;
+}
+.p-searchPage_css_5 {
+  height: 20rpx;
+  width: 750rpx;
+  background-color: #eeeeed;
+}
+
+
+.SIM-scroll {
+  height: 500rpx;
+  /* overflow: hidden; */
+  position: absolute;
+  left: 170rpx;
+  top: 99rpx;
+  width: 550rpx;
+  z-index: 9999;
+  background: #fff;
+  padding: 20rpx 0 0;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+.SIM-list {
+  padding: 0 20rpx;
+}
+
+.SIM-list .SIM-li {
+  font-size: 28rpx;
+  color: #666;
+  width: 100%;
+  overflow: hidden;
+}
+
+.SIM-list .SIM-li cover-view {
+  float: left;
+  line-height: 54rpx;
+}

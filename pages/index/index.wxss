@@ -1,0 +1,175 @@
+.box {
+  padding: 100rpx 30rpx 0;
+  background: #eee;
+}
+
+.logo {
+  width: 171rpx;
+  height: 93rpx;
+  margin: 0 auto;
+  display: block;
+}
+
+.ismyys {
+  width: 690rpx;
+  height: 200rpx;
+  margin-top: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnmyys {
+  width: 330rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #f19100;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.input-bar {
+  padding: 60rpx 0 0 20rpx;
+}
+
+.input-bar .li {
+  margin: 0 0 30rpx;
+  position: relative;
+}
+
+.input-bar .li .name {
+  float: left;
+  font-size: 28rpx;
+  color: #222;
+  line-height: 80rpx;
+}
+
+.input-bar .li .input, .picker {
+  width: 530rpx;
+  float: right;
+  position: relative;
+}
+
+.input-bar .li .icon {
+  border-width: 20rpx 20rpx 0;
+  border-style: solid;
+  border-color: #f19100 transparent transparent; /*灰 透明 透明 */
+  width: 0;
+  position: absolute;
+  top: 32rpx;
+  right: 30rpx;
+  z-index: 0;
+}
+
+.input-bar .li input {
+  width: 100%;
+}
+
+.SIM-scroll {
+  height: 500rpx;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 80rpx;
+  width: 530rpx;
+  z-index: 9999;
+  background: #fff;
+  padding: 20rpx 0 0;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.SIM-list {
+  padding: 0 20rpx;
+}
+
+.SIM-list .SIM-li {
+  line-height: 54rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.query {
+  margin: 60rpx 0 0;
+}
+
+.btn-bar {
+  overflow: hidden;
+  padding: 80rpx 0 0;
+}
+
+.btn-bar view {
+  width: 250rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  border-radius: 6rpx;
+  border: 1rpx solid #f19100;
+  font-size: 30rpx;
+  color: #222;
+}
+
+.btn-bar .left {
+  float: left;
+}
+
+.btn-bar .right {
+  float: right;
+}
+
+.query-location {
+  padding: 40rpx 0 0;
+  text-align: center;
+}
+
+.query-location text {
+  color: #00a8d4;
+  text-decoration: underline;
+  font-size: 28rpx;
+}
+
+.mytopbg {
+  width: 750rpx;
+  height: 460rpx;
+}
+
+.mybox {
+  width: 690rpx;
+  margin-left: 30rpx;
+  display: flex;
+}
+
+.btnbox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnimg {
+  width: 144rpx;
+  height: 144rpx;
+  margin-top: 130rpx;
+}
+
+.btntext {
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.btnExit {
+  width: 460rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 166rpx;
+  margin-left: 145rpx;
+  text-align: center;
+  border: 1rpx solid #f19100;
+  border-radius: 8rpx;
+  color: #f19100;
+  font-size: 32rpx;
+}

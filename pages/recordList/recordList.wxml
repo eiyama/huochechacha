@@ -1,0 +1,33 @@
+<!-- 安装记录 -->
+<view class='box'>
+  <view class='search-bar'>
+    <input placeholder='请输入设备SIM' bindinput='getSearchValue' value='{{ searchV }}'/>
+    <image bindtap='serachList' src='/images/map/yellowSearchIcon.png'></image>
+  </view>
+  <scroll-view style="height: {{ scrollH + 'px' }}" bindscrolltolower="scrollHandler" lower-threshold class='scroll-box' scroll-y>
+    <view class='list'>
+      <view class='li' wx:key="{{ index }}" wx:for="{{ list }}">
+        <view class='left'>
+          <!-- <image wx:if="{{ item.Status }}" src='/images/recordList/successIcon.png'></image>
+          <image wx:if="{{ !item.Status  }}" src='/images/recordList/failIcon.png'></image> -->
+          <view class='info'>
+            <view class='sim'>
+              设备SIM：
+              <text class='text'>{{ item.DeviceId }}</text>
+            </view>
+            <view class='car-num'>
+              车牌号：
+              <text class='text'>{{ item.PlateNo }}</text>
+            </view>
+            <view class='date'>{{ item.CreateTime }}</view>
+          </view>
+        </view>
+        <view class='right'>
+          <view wx:if="{{ item.Status }}" data-id='{{ item.PlatformId }}' bindtap='clickQuery' data-deviceid="{{ item.DeviceId }}" class='query-btn'>查看</view>
+          <view wx:if="{{ !item.Status }}" data-id='{{ item.PlatformId }}' bindtap='linksetData' data-index="{{ index }}" class='query-btn active'>查看</view>
+          <view bindtap='linkUpInfo' class='up-info-btn'>上传资料</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

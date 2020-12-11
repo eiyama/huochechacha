@@ -1,0 +1,45 @@
+<view class="box">
+  <view class='form-bar'>
+    <view class='li'>
+      <view class='name'>
+        <text class="red">*</text>SIM卡号：</view>
+      <input bindinput='getSIM' value='{{ oneForm.SIMNO }}' />
+    </view>
+    <view class='li'>
+      <view class='name'>设备类型：</view>
+      <picker class="picker" bindchange="bindPickerChange" value="{{ index }}" range="{{ array }}" range-key='DeviceName'>
+        <input placeholder='请选择设备类型' disabled value='{{ array[index].DeviceName }}' />
+      </picker>
+      <view class='icon'></view>
+    </view>
+  </view>
+  <button class='send'>发送</button>
+  <view wx:if="{{ list.length > 0 || queryList.length > 0 }}" class='crurent'>发送状态</view>
+    <scroll-view scroll-y wx:if="{{ list.length > 0 || queryList.length > 0 }}" class='list-box'>
+      <view wx:if="{{ list.length > 0 }}" class='details'>
+        <view wx:if="{{ item.result.Code != 0 }}" class='li' wx:for="{{ list }}">
+          <view class='li-bar'>
+            <image src='/images/setData/emailIcon.png'></image>
+            <view class='date'>{{ item.date }}</view>
+            <view wx:if="{{ item.result.Code == 0 }}" class='success'>发送成功</view>
+            <view wx:if="{{ item.result.Code != 0 }}" class='fail'>发送失败</view>
+            <button bindtap='resend' data-id='1' data-item="{{ item }}" hover-class='none' wx:if="{{ item.result.Code != 0 }}" class='resend'>重发</button>
+          </view>
+          <view class='p'>{{ item.result.Directive }}</view>
+        </view>
+      </view>
+      <view wx:if="{{ queryList.length > 0 }}" class='details'>
+        <view wx:if="{{ item.code != 200 }}" class='li' wx:for="{{ queryList }}">
+          <view class='li-bar'>
+            <image wx:if="{{ item.type != '下行' }}" src='/images/setData/uploadIcon.png'></image>
+            <image wx:if="{{ item.type == '下行' }}" src='/images/setData/downIcon.png'></image>
+            <view class='date'>{{ item.time }}</view>
+            <view wx:if="{{ item.sendState == '成功' }}" class='success'>发送成功</view>
+            <view wx:if="{{ item.sendState != '成功' }}" class='fail'>发送失败</view>
+            <button bindtap='resend' hover-class='none' data-id='2' data-item="{{ item }}" wx:if="{{ item.sendState != '成功' }}" class='resend'>重发</button>
+          </view>
+          <view class='p'>{{ item.content }}</view>
+        </view>
+      </view>
+    </scroll-view>
+</view>

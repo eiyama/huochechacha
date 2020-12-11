@@ -1,0 +1,156 @@
+.box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+#map {
+  width: 100%;
+  flex: 1;
+}
+
+.car-info {
+  padding: 10rpx 30rpx;
+  height: 202rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #222;
+  font-weight: bold;
+  line-height: 48rpx;
+  display: flex;
+}
+
+.title .icon {
+  display: inline-block;
+  width: 32rpx;
+  height: 32rpx;
+  background: #2fad03;
+  margin: 8rpx 0 0 20rpx;
+  border-radius: 50%;
+}
+
+.p, .other-info .li {
+  line-height: 44rpx;
+}
+
+.p .left, .p .right, .p, .other-info .li {
+  display: flex;
+}
+
+.p .left, .p .right {
+  flex: 1;
+}
+
+.p .name, .other-info .name {
+  color: #333;
+}
+
+.p .info, .other-info .info {
+  color: #999;
+  margin-left: 6rpx;
+}
+
+.line {
+  height: 2rpx;
+  background: #bfbfbf;
+  z-index: 998;
+}
+
+.icon-down {
+  width: 120rpx;
+  height: 36rpx;
+  overflow: hidden;
+  position: absolute;
+  bottom: 2rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  z-index: 9999;
+}
+
+.icon-down .border {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: #bfbfbf 2rpx solid;
+  background: #fff;
+  position: relative;
+  top: -88rpx;
+  left: 0;
+}
+
+.icon-down .icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 78rpx;
+}
+
+.animetion-box {
+  position: absolute;
+  top: 202rpx;
+  left: 0;
+  width: 100%;
+}
+
+.other-info-box {
+  overflow: hidden;
+  z-index: 999;
+  padding: 0 0 36rpx;
+}
+
+.other-info {
+  background: #fff;
+  padding: 0 30rpx 10rpx;
+  box-sizing: border-box;
+  /* animation: icon-rotate 1s linear infinite; */
+}
+
+.other-info .li {
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+  height: 44rpx;
+}
+.title .bg-red{
+  background: red;
+}
+.refresh{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 80rpx;
+  right: 40rpx;
+  background: #777;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  text-align: center;
+  z-index: 9999;
+}
+.animationTop {
+  transform: translateY(-224rpx);
+  transition: all 0.5s;
+}
+
+.animationBottom {
+  transform: translateY(0);
+  transition: all 0.5s;
+}
+
+@keyframes icon-rotate {
+  from {
+    transform: translateY(-284rpx);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

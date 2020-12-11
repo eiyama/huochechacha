@@ -1,0 +1,21 @@
+<!--pages/lookupLocation/haveTrajectory/haveTrajectory.wxml-->
+<view class='box'>
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="13" show-location="false" polyline="{{polyline}}" markers="{{markers}}" include-points="{{showallpoints}}">
+  </map>
+  <view class="bottom-info">
+    <view class="plate">{{plateNo}}</view>
+    <view class="start">始：{{startAddress}}</view>
+    <view class="end">终：{{endAddress}}</view>
+    <view class="time-bra">
+      <view style='font-size:28rpx;'>时间：</view>
+      <view style='font-size:28rpx;'>{{startTime}}~{{endTime}}</view>
+    </view>
+    <!-- <view class="btn-bar" wx:if="{{linkTrajectoryShow}}">
+      <button bindtap="clickLinkTrajectory" class="btn">点击查看最新位置</button>
+    </view>
+    <button wx:if="{{!linkTrajectoryShow}}" class='p-index_css_share' open-type='share'></button>
+    <navigator wx:if="{{linkTrajectoryShow}}" class='link-index' url='/pages/index/index'>
+      <image src='/images/nearbyCar/index.png'></image>
+    </navigator> -->
+  </view>
+</view>

@@ -1,0 +1,74 @@
+.box{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+}
+.box .search-bar{
+  position: relative;
+  padding: 20rpx 50rpx;
+}
+.box .search-bar input{
+  border-color: #f19100;
+  background: none;
+  padding-right: 60rpx;
+}
+.box .search-bar image{
+  position: absolute;
+  top: 40rpx;
+  right: 60rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.box .scroll-box{
+  flex: 1;
+  overflow-y: hidden;
+}
+.list{
+  border-top: 2rpx solid #cacaca;
+}
+.list .li{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #cacaca;
+  padding: 10rpx 30rpx;
+}
+.list .left{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  color: #333;
+}
+.list .left image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 30rpx;
+}
+.list .left .date{
+  color: #999;
+  font-size: 24rpx;
+  line-height: 44rpx;
+}
+.list .left .text{
+  color: #999;
+}
+.list .right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.list .right view{
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #f19100;
+  border: 1rpx solid #f19100;
+  border-radius: 6rpx;
+  text-align: center;
+  margin: 10rpx 0;
+}
+.list .right .active{
+  border-color: #eb3700;
+  color: #eb3700;
+}

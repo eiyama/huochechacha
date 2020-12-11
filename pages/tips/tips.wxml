@@ -1,0 +1,8 @@
+<!-- 提示 -->
+<view class='box'>
+  <view class='network-err' wx:if="{{ networkErr }}">
+    <image class='img' src='{{ tipsrc }}'></image>
+    <view class='tip'>{{ msgInfo }}</view>
+    <view class='tryagain'>请稍后再试哦！</view>
+  </view>
+</view>
